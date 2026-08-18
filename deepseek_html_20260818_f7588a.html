@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ LAB - Laboratorio de Impresión 3D para Colegios</title>
+    <style>
+        :root {
+            --azul: #1E3A8A;
+            --naranja: #F97316;
+            --gris-claro: #F3F4F6;
+            --blanco: #FFFFFF;
+            --texto: #1F2937;
+            --texto-claro: #4B5563;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--texto);
+            background: var(--blanco);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--azul);
+            color: var(--blanco);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: white;
+            border-radius: 10px;
+            padding: 3px;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .logo-text span {
+            color: var(--naranja);
+        }
+        .cta-btn {
+            background: var(--naranja);
+            color: var(--blanco);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background: #ea580c;
+        }
+        .btn-secundario {
+            background: var(--blanco);
+            color: var(--azul);
+            border: 2px solid var(--azul);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .btn-secundario:hover {
+            background: var(--azul);
+            color: var(--blanco);
+        }
+        .hero {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
+            color: var(--blanco);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        .hero .highlight {
+            color: var(--naranja);
+            font-weight: bold;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--azul);
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .card {
+            background: var(--gris-claro);
+            border-radius: 15px;
+            padding: 30px;
+            flex: 1 1 280px;
+            max-width: 350px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            color: var(--azul);
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: var(--texto-claro);
+        }
+        .price-box {
+            background: var(--azul);
+            color: var(--blanco);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .price-box .amount {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--naranja);
+        }
+        .price-box p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+        }
+        .includes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .include-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--naranja);
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+        footer {
+            background: #111827;
+            color: #9CA3AF;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .section h2 { font-size: 1.8rem; }
+            .price-box .amount { font-size: 2.5rem; }
+            .btn-secundario { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container header-flex">
+        <div class="logo-container">
+            <img src="logo.png" alt="IQ LAB Logo" class="logo-img">
+            <div class="logo-text">IQ<span>LAB</span></div>
+        </div>
+        <a href="#demo" class="cta-btn">Agendar Demo Gratis</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Transforma tu colegio con un <span class="highlight">Laboratorio de Impresión 3D</span></h1>
+        <p>Equipamiento completo, kits individuales, capacitación docente y acompañamiento técnico por 10 meses. Sin complicaciones.</p>
+        <div class="hero-buttons">
+            <a href="#demo" class="cta-btn">Solicita una presentación sin costo</a>
+            <a href="propuesta.pdf" download class="btn-secundario">📄 Descargar Propuesta PDF</a>
+        </div>
+    </div>
+</section>
+
+<!-- Beneficios -->
+<section class="section">
+    <div class="container">
+        <h2>Beneficios para tu institución</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">🖨️</div>
+                <h3>Laboratorio listo</h3>
+                <p>Instalamos todo el equipamiento, calibramos y dejamos operativo el espacio.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🎒</div>
+                <h3>Kits para cada estudiante</h3>
+                <p>Cada alumno recibe material didáctico y guía de proyectos personalizada.</p>
+            </div>
+            <div class="card">
+                <div class="icon">👩‍🏫</div>
+                <h3>Capacitación docente</h3>
+                <p>Formamos al profesor titular en diseño 3D, operación y mantenimiento básico.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Acompañamiento 10 meses</h3>
+                <p>Ingeniero y asistente disponibles para soporte técnico y pedagógico continuo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programa incluye -->
+<section class="section" style="background: var(--gris-claro);">
+    <div class="container">
+        <h2>¿Qué incluye el programa?</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">🖥️</div>
+                <h3>3 Impresoras 3D</h3>
+                <p>Bambu Lab A1 con nivelación automática y alta velocidad.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🧵</div>
+                <h3>Filamento PLA</h3>
+                <p>10 rollos de colores para todo el ciclo escolar.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📦</div>
+                <h3>Kit por estudiante</h3>
+                <p>Incluye guía, espátula, lija, muestra de filamento y llavero impreso.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔧</div>
+                <h3>Herramientas de acabado</h3>
+                <p>Todo lo necesario para lijar, pintar y ensamblar piezas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Precio -->
+<section class="section">
+    <div class="container">
+        <h2>Inversión accesible</h2>
+        <div class="price-box">
+            <div class="amount">$100</div>
+            <p>por estudiante · ciclo de 10 meses</p>
+            <div class="includes">
+                <span class="include-item">✅ Equipamiento</span>
+                <span class="include-item">✅ Kits individuales</span>
+                <span class="include-item">✅ Capacitación</span>
+                <span class="include-item">✅ Acompañamiento</span>
+            </div>
+            <div style="margin-top: 30px;">
+                <a href="propuesta.pdf" download class="cta-btn">Descargar PDF de la propuesta</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Metodología -->
+<section class="section" style="background: var(--gris-claro);">
+    <div class="container">
+        <h2>¿Cómo funciona?</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">1️⃣</div>
+                <h3>Diagnóstico</h3>
+                <p>Visitamos tu institución y evaluamos el espacio disponible.</p>
+            </div>
+            <div class="card">
+                <div class="icon">2️⃣</div>
+                <h3>Instalación</h3>
+                <p>Montamos el laboratorio y dejamos las impresoras calibradas.</p>
+            </div>
+            <div class="card">
+                <div class="icon">3️⃣</div>
+                <h3>Capacitación</h3>
+                <p>Formamos al docente titular en diseño 3D y operación.</p>
+            </div>
+            <div class="card">
+                <div class="icon">4️⃣</div>
+                <h3>Acompañamiento</h3>
+                <p>Durante 10 meses brindamos soporte técnico y pedagógico.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reserva de Demo / Calendario CONECTADO A GOOGLE FORMS -->
+<section class="section" id="demo">
+    <div class="container">
+        <h2>Reserva una Demo Gratuita</h2>
+        <form class="contact-form"
+              action="https://docs.google.com/forms/d/e/TU_FORM_ID/formResponse"
+              method="post"
+              target="_blank">
+
+            <div class="form-group">
+                <input type="text" name="entry.1000001" placeholder="Nombre de la institución" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="entry.1000002" placeholder="Correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="entry.1000003" placeholder="Teléfono de contacto">
+            </div>
+            <div class="form-group">
+                <label for="fecha">Selecciona una fecha:</label>
+                <input type="date" id="fecha" name="entry.1000004" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Selecciona una hora:</label>
+                <select id="hora" name="entry.1000005" required>
+                    <option value="">-- Selecciona --</option>
+                    <option value="09:00">09:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="15:00">03:00 PM</option>
+                    <option value="16:00">04:00 PM</option>
+                    <option value="17:00">05:00 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="entry.1000006" placeholder="Cuéntanos sobre tu institución y número de estudiantes"></textarea>
+            </div>
+            <button type="submit" class="cta-btn" style="width: 100%;">Confirmar Reserva</button>
+        </form>
+        <p style="text-align:center; margin-top:15px; font-size:0.9rem; color:gray;">
+            Al enviar, serás redirigido a una página de confirmación de Google Forms.
+        </p>
+    </div>
+</section>
+
+<!-- Contacto -->
+<section class="section" id="contacto" style="background: var(--gris-claro);">
+    <div class="container">
+        <h2>¿Tienes preguntas?</h2>
+        <p style="text-align:center; max-width: 600px; margin: 0 auto 30px;">Escríbenos a <strong>iq593ec@gmail.com</strong> o usa el formulario de contacto.</p>
+        <form class="contact-form" action="mailto:iq593ec@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Tu correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <textarea name="mensaje" placeholder="Escribe tu mensaje"></textarea>
+            </div>
+            <button type="submit" class="cta-btn" style="width: 100%;">Enviar Mensaje</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 IQ Engineer · IQ LAB - Programas educativos en fabricación digital</p>
+        <p>📧 iq593ec@gmail.com &nbsp;·&nbsp; 📱 +593 987 338 621</p>
+    </div>
+</footer>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/593987338621?text=Hola,%20me%20interesa%20el%20programa%20IQ%20LAB%20de%20impresión%203D%20para%20colegios" target="_blank" class="whatsapp-float">💬</a>
+
+</body>
+</html>
