@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidor Autorizado Tienda OMYS - Catálogo Chaide</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0076a3;
+            --accent-color: #d35400;
+            --whatsapp-color: #25D366;
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            width: 180px;
+            height: 80px;
+            margin: 0 auto 1rem auto;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-warranty {
+            align-self: flex-start;
+            background-color: #27ae60;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin: 0 0 0.8rem 0;
+            color: var(--primary-color);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: auto;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .price-table th, .price-table td {
+            padding: 0.4rem;
+            text-align: left;
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        .price-table th {
+            background-color: #f8fafc;
+            color: var(--secondary-color);
+        }
+
+        .price-highlight {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--whatsapp-color);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: #1ebc57;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-list {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .product-list table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .product-list th, .product-list td {
+            padding: 0.65rem 0.8rem;
+            border-bottom: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        .product-list th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .product-list tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1a252f;
+            color: white;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <span class="logo-placeholder">[ LOGO TIENDA OMYS ]</span>
+        </div>
+        
+        <h1>Distribuidor Autorizado Tienda OMYS</h1>
+        <p>Catálogo Completo Chaide & Chaide - Precios Actualizados de Contado</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- PUBLICACIONES CON FOTOGRAFÍA Y BOTÓN DE COMPRA -->
+        <h2 class="section-title">Modelos Promocionales Destacados</h2>
+        <div class="grid">
+
+            <!-- Restapedic con Pillow Top -->
+            <div class="card">
+                <img src="input_file_0.png" alt="Restapedic con Pillow Top" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">10 Años de Garantía</span>
+                    <h3 class="card-title">Restapedic con Pillow Top</h3>
+                    <p>Soporte ortopédico superior con capa de confort adicional Pillow Top.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 ½ Plz (105x190x28 cm)</td><td class="price-highlight">$129.00 USD</td></tr>
+                            <tr><td>2 Plz (135x190x28 cm)</td><td class="price-highlight">$163.00 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200x28 cm)</td><td class="price-highlight">$203.00 USD</td></tr>
+                            <tr><td>3 Plz (200x200x28 cm)</td><td class="price-highlight">$258.00 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Restapedic%20con%20Pillow%20Top" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Imperial X31 CM -->
+            <div class="card">
+                <img src="input_file_1.png" alt="Imperial X31 CM" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">8 Años de Garantía</span>
+                    <h3 class="card-title">Imperial X31 CM</h3>
+                    <p>Acolchado de gran espesor con protección antiviral y excelente firmeza.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 ½ Plz (105x190x31)</td><td class="price-highlight">$94.48 USD</td></tr>
+                            <tr><td>2 Plz (135x190x31)</td><td class="price-highlight">$117.92 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200x31)</td><td class="price-highlight">$149.88 USD</td></tr>
+                            <tr><td>3 Plz (200x200x31)</td><td class="price-highlight">$191.09 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Imperial%20X31%20CM" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Imperial X27 CM -->
+            <div class="card">
+                <img src="input_file_2.png" alt="Imperial X27 CM" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">7 Años de Garantía</span>
+                    <h3 class="card-title">Imperial X27 CM</h3>
+                    <p>Diseño tradicional floreado con el mejor equilibrio entre resistencia y precio.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 ½ Plz (105x190x27)</td><td class="price-highlight">$90.22 USD</td></tr>
+                            <tr><td>2 Plz (135x190x27)</td><td class="price-highlight">$112.95 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200x27)</td><td class="price-highlight">$144.20 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Imperial%20X27%20CM" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Ortopédico Prensado Pillow Top -->
+            <div class="card">
+                <img src="input_file_3.png" alt="Ortopédico Prensado Pillow Top" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">10 Años de Garantía</span>
+                    <h3 class="card-title">Ortopédico Prensado Pillow Top</h3>
+                    <p>Estructura rígida de alta firmeza para la postura y capa superficial mullida.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 ½ Plz (105x190)</td><td class="price-highlight">$120.84 USD</td></tr>
+                            <tr><td>2 Plz (135x190)</td><td class="price-highlight">$156.77 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200)</td><td class="price-highlight">$194.00 USD</td></tr>
+                            <tr><td>3 Plz (200x200)</td><td class="price-highlight">$241.68 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Ortop%C3%A9dico%20Prensado%20Pillow%20Top" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Continental de Lujo PT (Combo Base + Cabecero) -->
+            <div class="card">
+                <img src="input_file_4.png" alt="Continental de Lujo PT Combo Base + Cabecero" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">10 Años de Garantía</span>
+                    <h3 class="card-title">Continental de Lujo PT (Combo)</h3>
+                    <p>Incluye colchón de lujo Pillow Top, base somier y cabecero tapizado.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2 Plz (135x190)</td><td class="price-highlight">$410.00 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200)</td><td class="price-highlight">$500.00 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Combo%20Continental%20de%20Lujo%20PT" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Protector de Colchón Soft -->
+            <div class="card">
+                <img src="input_file_5.png" alt="Protector de Colchón Soft Impermeable" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">Barrera Antiácaros</span>
+                    <h3 class="card-title">Protector de Colchón Soft</h3>
+                    <p>Protector acolchado e impermeable con tela transpirable en color blanco.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2 Plz (135x190)</td><td class="price-highlight">$38.00 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200)</td><td class="price-highlight">$42.00 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Protector%20de%20Colch%C3%B3n%20Soft" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Continental de Lujo Nueva Generación PT/Plomo -->
+            <div class="card">
+                <img src="input_file_6.png" alt="Continental de Lujo Nueva Generación PT/Plomo" class="card-img">
+                <div class="card-body">
+                    <span class="badge-warranty">10 Años de Garantía</span>
+                    <h3 class="card-title">Continental Lujo NG PT/Plomo</h3>
+                    <p>Diseño exclusivo de nueva generación con Pillow Top acolchado plomo.</p>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Medida / Plazas</th><th>Precio Contado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 ½ Plz (105x190x30)</td><td class="price-highlight">$142.78 USD</td></tr>
+                            <tr><td>2 Plz (135x190x30)</td><td class="price-highlight">$187.53 USD</td></tr>
+                            <tr><td>2 ½ Plz (160x200x30)</td><td class="price-highlight">$236.55 USD</td></tr>
+                            <tr><td>3 Plz (200x200x30)</td><td class="price-highlight">$306.16 USD</td></tr>
+                        </tbody>
+                    </table>
+                    <a href="https://wa.me/593967630724?text=Hola%20Tienda%20OMYS,%20deseo%20comprar%20el%20Continental%20Lujo%20Nueva%20Generaci%C3%B3n" class="btn-buy" target="_blank">🛒 Comprar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LISTA GENERAL CON PRECIOS ACTUALIZADOS -->
+        <h2 class="section-title">Línea Fussion, Pocket Hypersoft y Continentales</h2>
+        <div class="product-list">
+            <table>
+                <thead>
+                    <tr><th>Producto / Modelo</th><th>Dimensiones (cm)</th><th>Precio de Lista</th><th>Precio Contado (Descuento)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>FUSSION</td><td>105x190x27</td><td>$289.00</td><td class="price-highlight">$205.29</td></tr>
+                    <tr><td>FUSSION</td><td>135x190x27</td><td>$360.00</td><td class="price-highlight">$255.73</td></tr>
+                    <tr><td>FUSSION</td><td>160x190x27</td><td>$454.00</td><td class="price-highlight">$322.50</td></tr>
+                    <tr><td>FUSSION</td><td>200x200x27</td><td>$585.00</td><td class="price-highlight">$415.56</td></tr>
+                    <tr><td>CHN CHAIDE POCKET HYPERSOFT</td><td>105x190x30</td><td>$229.00</td><td class="price-highlight">$162.67</td></tr>
+                    <tr><td>CHN CHAIDE POCKET HYPERSOFT</td><td>135x190x30</td><td>$289.00</td><td class="price-highlight">$205.29</td></tr>
+                    <tr><td>CHN CHAIDE POCKET HYPERSOFT</td><td>160x200x30</td><td>$348.00</td><td class="price-highlight">$247.20</td></tr>
+                    <tr><td>CHN CHAIDE POCKET HYPERSOFT</td><td>200x200x30</td><td>$425.00</td><td class="price-highlight">$301.90</td></tr>
+                    <tr><td>CONTINENTAL FB</td><td>105x190x27</td><td>$250.00</td><td class="price-highlight">$177.59</td></tr>
+                    <tr><td>CONTINENTAL FB</td><td>135x190x27</td><td>$301.00</td><td class="price-highlight">$213.82</td></tr>
+                    <tr><td>CONTINENTAL FB</td><td>160x200x27</td><td>$367.00</td><td class="price-highlight">$260.70</td></tr>
+                    <tr><td>CONTINENTAL FB</td><td>200x200x27</td><td>$437.00</td><td class="price-highlight">$310.43</td></tr>
+                    <tr><td>CONTINENTAL LUJO TRAD GRIS / NG</td><td>105x190x29</td><td>$180.00</td><td class="price-highlight">$127.86</td></tr>
+                    <tr><td>CONTINENTAL LUJO TRAD GRIS / NG</td><td>135x190x29</td><td>$236.00</td><td class="price-highlight">$167.64</td></tr>
+                    <tr><td>CONTINENTAL LUJO TRAD GRIS / NG</td><td>160x200x29</td><td>$296.00</td><td class="price-highlight">$210.27</td></tr>
+                    <tr><td>CONTINENTAL LUJO TRAD GRIS / NG</td><td>200x200x29</td><td>$381.00</td><td class="price-highlight">$270.65</td></tr>
+                    <tr><td>HOTELERO</td><td>105x190x28</td><td>$207.00</td><td class="price-highlight">$147.04</td></tr>
+                    <tr><td>HOTELERO</td><td>135x190x28</td><td>$273.00</td><td class="price-highlight">$193.93</td></tr>
+                    <tr><td>HOTELERO</td><td>160x200x28</td><td>$343.00</td><td class="price-highlight">$243.65</td></tr>
+                    <tr><td>HOTELERO</td><td>200x200x28</td><td>$442.00</td><td class="price-highlight">$313.98</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Líneas Dreambox, Zafiro y Semiortopédicos</h2>
+        <div class="product-list">
+            <table>
+                <thead>
+                    <tr><th>Producto / Modelo</th><th>Dimensiones (cm)</th><th>Precio de Lista</th><th>Precio Contado (Descuento)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>CHN. DREAMBOX MEMORY</td><td>105x190x22</td><td>$281.00</td><td class="price-highlight">$188.14</td></tr>
+                    <tr><td>CHN. DREAMBOX MEMORY</td><td>135x190x22</td><td>$356.00</td><td class="price-highlight">$238.35</td></tr>
+                    <tr><td>CHN. DREAMBOX MEMORY</td><td>160x200x22</td><td>$415.00</td><td class="price-highlight">$277.85</td></tr>
+                    <tr><td>CHN. DREAMBOX MEMORY</td><td>200x200x22</td><td>$509.00</td><td class="price-highlight">$340.79</td></tr>
+                    <tr><td>ZAFIRO 24</td><td>105x190x24</td><td>$80.00</td><td class="price-highlight">$56.83</td></tr>
+                    <tr><td>ZAFIRO 24</td><td>135x190x24</td><td>$99.00</td><td class="price-highlight">$70.33</td></tr>
+                    <tr><td>ZAFIRO 29</td><td>105x190x29</td><td>$96.00</td><td class="price-highlight">$68.19</td></tr>
+                    <tr><td>ZAFIRO 29</td><td>135x190x29</td><td>$121.00</td><td class="price-highlight">$85.95</td></tr>
+                    <tr><td>ZAFIRO 29</td><td>160x200x29</td><td>$153.00</td><td class="price-highlight">$108.68</td></tr>
+                    <tr><td>SEMI ORTOPEDICO</td><td>105x190x18</td><td>$111.00</td><td class="price-highlight">$77.04</td></tr>
+                    <tr><td>SEMI ORTOPEDICO</td><td>135x190x18</td><td>$139.00</td><td class="price-highlight">$96.47</td></tr>
+                    <tr><td>SEMI ORTOPEDICO (NUEVO)</td><td>105x190x22</td><td>$140.00</td><td class="price-highlight">$97.16</td></tr>
+                    <tr><td>SEMI ORTOPEDICO (NUEVO)</td><td>135x190x22</td><td class="price-highlight">$174.00</td><td class="price-highlight">$120.76</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Distribuidor Autorizado Tienda OMYS | Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
